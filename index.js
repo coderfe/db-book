@@ -2,34 +2,40 @@ const os = require('os');
 const puppeteer = require('puppeteer-core');
 const ora = require('ora');
 
-module.exports = async ({ username, password, headless }) => {
+module.exports = async ({ username, password, headless, executablePath }) => {
   if (!username || !password) {
     return process.exit(1);
   }
 
   const spinner = ora('服务正在启动').start();
-  let executablePath = '';
+  let _executablePath = '';
   switch (os.platform()) {
     case 'win32':
-      executablePath =
+      _executablePath =
         'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe';
       break;
     case 'linux':
-      executablePath = '/opt/google/chrome/google-chrome';
+      _executablePath = '/opt/google/chrome/google-chrome';
       break;
+    case 'darwin':
+      _executablePath =
+        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+      break;
+    default:
+      _executablePath = executablePath;
   }
 
-  if (!executablePath) {
+  if (!_executablePath) {
     spinner.stopAndPersist({
       prefixText: '❌',
-      text: '登录超时...'
+      text: '请指定有效的 Chrome 可执行文件路径'
     });
     return process.exit(1);
   }
 
   const browser = await puppeteer.launch({
     headless,
-    executablePath
+    executablePath: _executablePath
   });
   const page = await browser.newPage();
   spinner.text = `正在登录：${username}`;
