@@ -96,7 +96,8 @@ module.exports = async ({ username, password, headless, executablePath }) => {
               ? item
                   .getElementsByClassName('date')[0]
                   .textContent.match(/\d{4}-\d{2}-\d{2}/)[0]
-              : ''
+              : '',
+            url: item.getElementsByTagName('a')[0].href
           };
         });
       },
