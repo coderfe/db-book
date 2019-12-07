@@ -8,15 +8,20 @@
     "url": "https://coderfee.com"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "rm -rf lib && tsc -p .",
+    "lint:fix": "prettier --write src/*.ts"
+  },
   "dependencies": {
-    "ora": "^3.4.0",
-    "puppeteer-core": "^1.18.0"
+    "puppeteer": "^2.0.0"
   },
   "keywords": [
     "douban",
-    "douban books",
-    "books"
+    "douban book",
+    "books",
+    "douban movie"
   ],
   "repository": {
     "type": "git",
@@ -26,5 +31,14 @@
   "bugs": {
     "email": "coderfee@outlook.com",
     "url": "https://github.com/coderfe/db-book/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "@types/puppeteer": "^2.0.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
   }
 }

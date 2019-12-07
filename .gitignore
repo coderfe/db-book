@@ -1,3 +1,2 @@
-config.js
-books.json
-node_modules
+node_modules/
+lib/
