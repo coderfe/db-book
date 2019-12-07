@@ -1,7 +1,7 @@
 {
   "name": "db-book",
-  "version": "1.0.5",
-  "description": "Douban book",
+  "version": "1.0.6",
+  "description": "Douban interest",
   "author": {
     "name": "coderfee",
     "email": "coderfee@outlook.com",
@@ -33,12 +33,9 @@
     "url": "https://github.com/coderfe/db-book/issues"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
     "@types/node": "^12.12.14",
     "@types/puppeteer": "^2.0.0",
-    "jest": "^24.9.0",
     "prettier": "^1.19.1",
-    "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
   }
 }
